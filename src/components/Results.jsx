@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import movies from "../data/movies.json";
 
 const Results = () => {
@@ -6,9 +7,9 @@ const Results = () => {
       {movies.Search.map((movie) => (
         <div key={movie.imdbID} className="card">
           <img src={movie.Poster} alt={movie.Title} />
-          <a href="/">
+          <Link to={`/movie/${movie.imdbID}`}>
             {movie.Title} ({movie.Year})
-          </a>
+          </Link>
         </div>
       ))}
     </div>
