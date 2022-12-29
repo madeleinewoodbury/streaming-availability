@@ -1,7 +1,11 @@
+import SearchForm from "./components/SearchForm";
+import Results from "./components/Results";
+
 const App = () => {
   return (
-    <div>
-      <h1>Streaming Guide</h1>
+    <div className="container">
+      <SearchForm />
+      <Results />
     </div>
   );
 };
