@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import data from "../data/movieData.json";
 import streamingData from "../data/streaming.json";
 import imdb from "../assets/imdb.png";
@@ -32,7 +33,10 @@ const Details = () => {
 
   return (
     <div className="details">
-      <h1 className="title">
+      <Link to="/" className="btn">
+        Go Back
+      </Link>
+      <h1 className="text-light">
         {movie.title} ({movie.year})
       </h1>
       <div className="info">

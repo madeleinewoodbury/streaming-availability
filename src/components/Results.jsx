@@ -6,7 +6,9 @@ const Results = () => {
     <div className="results">
       {movies.Search.map((movie) => (
         <div key={movie.imdbID} className="card">
-          <img src={movie.Poster} alt={movie.Title} />
+          <Link to={`/movie/${movie.imdbID}`}>
+            <img src={movie.Poster} alt={movie.Title} />
+          </Link>
           <Link to={`/movie/${movie.imdbID}`}>
             {movie.Title} ({movie.Year})
           </Link>
