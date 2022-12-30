@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "movie": {
+    "ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.6/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "98%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "96/100"
+      }
+    ],
+    "_id": "61d03df8343b8fcb4d3d85ea",
+    "title": "Parasite",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
+    "year": "2019",
+    "runtime": "132 min",
+    "genre": "Comedy, Drama, Thriller",
+    "director": "Bong Joon Ho",
+    "country": "South Korea",
+    "movieId": "tt6751668",
+    "rated": "R",
+    "released": "08 Nov 2019",
+    "writer": "Bong Joon Ho, Jin-won Han",
+    "actors": "Kang-ho Song, Sun-kyun Lee, Yeo-jeong Cho",
+    "plot": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    "language": "Korean, English",
+    "type": "movie",
+    "production": "N/A",
+    "date": "2022-01-01T11:41:44.089Z",
+    "__v": 0
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "genre": ["War"],
+  "imageurl": [
+    "https://m.media-amazon.com/images/M/MV5BNjIyNzU5ZDAtODNkOS00YjU4LTk5YmMtOGVkNDY1YjA0YmI1XkEyXkFqcGdeQXVyODY0NTMxNTE@._V1_UX182_CR0,0,182,268_AL_.jpg"
+  ],
+  "imdbid": "tt9904802",
+  "imdbrating": 5,
+  "language": ["English", "Polish", "Russian", "German"],
+  "released": 2020,
+  "runtime": "92 min",
+  "streamingAvailability": {
+    "country": {
+      "US": [
+        {
+          "platform": "itunes",
+          "url": "https://itunes.apple.com/us/movie/enemy-lines/id1497546013?uo=4&at=1000l3V2"
+        },
+        {
+          "platform": "fandangonow",
+          "url": "https://www.fandangonow.com/details/movie/MMVA7CDEE1F7FDB10C7B6418CDB73F9A3D3B"
+        },
+        {
+          "platform": "amazon",
+          "url": "https://watch.amazon.com/detail?asin=B086VS6X9M&camp=1789&creativeASIN=B086VS6X9M&ie=UTF8&linkCode=xm2&tag=09-20"
+        },
+        {
+          "platform": "vudu",
+          "url": "https://www.vudu.com/content/movies/details/Enemy-Lines/1342209"
+        },
+        {
+          "platform": "youtube",
+          "url": "https://www.youtube.com/watch?v=GE-cC6Xr3GQ.P"
+        },
+        {
+          "platform": "play",
+          "url": "https://play.google.com/store/movies/details/Enemy_Lines?gl=US&hl=en&id=GE-cC6Xr3GQ.P"
+        },
+        {
+          "platform": "directv",
+          "url": "https://www.directv.com/movies/Enemy-Lines-TXhBQXA5TnFzT3kxa2Q0Y3JhU3lBZz09"
+        },
+        {
+          "platform": "hoopla",
+          "url": "https://www.hoopladigital.com/title/13304214"
+        },
+        {
+          "platform": "redbox",
+          "url": "https://www.redbox.com/ondemand-movies/enemy-lines"
+        }
+      ]
+    }
+  },
+  "synopsis": "In the frozen, war torn landscape of occupied Poland during World War II, a crack team of allied commandos are sent on a deadly mission behind enemy lines to extract a rocket scientist from the hands of the Nazis.",
+  "title": "Enemy Lines",
+  "type": "movie"
+}

@@ -1,15 +1,51 @@
-* {
-  box-sizing: border-box;
+:root {
+  --primary-color: #ffbb00;
+  --secondary-color: #0030ce;
+  --dark-color: #3f3d34;
+  --light-color: #f4f4f4;
+  --dark-light-color: #bebdbd;
+  --danger-color: #c52031;
+  --success-color: #28a745;
 }
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 10vh auto 0 auto;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
 }
 
 .search-form {
@@ -70,4 +106,95 @@ form button {
 
 .movie-card a {
   font-size: 1.2rem;
+}
+
+/* Details page */
+.details {
+  margin-top: 1rem;
+}
+
+.details h1 {
+  font-size: 3rem;
+}
+
+.details .info span {
+  margin-right: 1rem;
+  border-right: 1px solid grey;
+  padding-right: 1rem;
+}
+
+.details .info span:last-of-type {
+  border: none;
+}
+
+.details .streaming {
+  display: flex;
+}
+
+.details .streaming li {
+  margin-right: 1rem;
+}
+
+.details .streaming li a {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.details .streaming li a:hover {
+  color: var(--primary-color);
+}
+
+.details .content {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.details .content .poster {
+  margin-right: 1rem;
+}
+
+.details .content .poster img {
+  max-width: 200px;
+}
+
+.details .poster .ratings .rating img.imdb {
+  width: 40px;
+}
+
+.details .poster .ratings .rating img.tomato {
+  width: 20px;
+}
+
+.details .poster .ratings .rating img.metacritic {
+  width: 20px;
+}
+
+.details .poster .ratings .rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 1rem;
+}
+
+.details .poster .ratings .rating span {
+  margin-left: 0.75rem;
+}
+
+.details .content .about {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.details .content .about .plot {
+  font-size: 1.5rem;
+}
+
+.details .content .about .credits {
+  margin-top: 2rem;
+}
+
+.details .content .about .credits p {
+  font-size: 1.1rem;
 }
