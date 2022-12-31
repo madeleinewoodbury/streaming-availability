@@ -15,8 +15,20 @@ const Details = () => {
     return <h2 className="text-light">Loading...</h2>;
   }
 
-  const streaming = streamingResults.data.streamingAvailability.country.US;
+  const streaming =
+    streamingResults?.data?.streamingAvailability?.country?.US ?? [];
   const movie = results.data;
+
+  if (movie.Error) {
+    return (
+      <div className="details error">
+        <h1>Something went wrong...</h1>
+        <Link to="/" className="btn">
+          Go Back
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="details">
@@ -37,13 +49,15 @@ const Details = () => {
           <span className="language">{movie.Language}</span>
         )}
       </div>
-      <ul className="streaming">
-        {streaming.map((item) => (
-          <li key={item.url}>
-            <a href={item.url}>{item.platform}</a>
-          </li>
-        ))}
-      </ul>
+      {streaming.length ? (
+        <ul className="streaming">
+          {streaming.map((item) => (
+            <li key={item.url}>
+              <a href={item.url}>{item.platform}</a>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <div className="content">
         <div className="poster">
           <img

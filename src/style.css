@@ -156,6 +156,11 @@ form button:hover {
   float: right;
 }
 
+.details.error .btn {
+  float: none;
+  margin-top: 1rem;
+}
+
 .details h1 {
   font-size: 3rem;
 }
