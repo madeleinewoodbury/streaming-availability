@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import data from "../data/movieData.json";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import fetchMovie from "../util/fecthMovie";
 import streamingData from "../data/streaming.json";
 import imdb from "../assets/imdb.png";
 import metacritic from "../assets/metacritic.png";
@@ -7,12 +9,17 @@ import tomato from "../assets/tomato.png";
 import filmPlacholder from "../assets/film-placeholder.png";
 
 const Details = () => {
-  const { movie } = data;
+  const { id } = useParams();
+  const results = useQuery(["details", id], fetchMovie);
   const streaming = streamingData.streamingAvailability.country.US;
 
+  if (results.isLoading) {
+    return <h2 className="text-light">Loading...</h2>;
+  }
+
   const getRatings = () => {
-    if (movie.ratings !== undefined) {
-      let ratings = movie.ratings.map((rating, id) => (
+    if (results.data.Ratings !== undefined) {
+      let ratings = results.data.Ratings.map((rating, id) => (
         <div className="rating" key={id}>
           {rating.Source === "Internet Movie Database" && (
             <img className="imdb" src={imdb} alt="imdb" />
@@ -37,17 +44,17 @@ const Details = () => {
         Go Back
       </Link>
       <h1 className="text-light">
-        {movie.title} ({movie.year})
+        {results.data.Title} ({results.data.Year})
       </h1>
       <div className="info">
-        <span className="rating">{movie.rated}</span>
-        <span className="runtime">{movie.runtime}</span>
-        <span className="genre">{movie.genre}</span>
+        <span className="rating">{results.data.Rated}</span>
+        <span className="runtime">{results.data.Runtime}</span>
+        <span className="genre">{results.data.Genre}</span>
         <span className="released">
-          {movie.Released} ({movie.country})
+          {results.data.Released} ({results.data.Country})
         </span>
-        {movie.language !== "N/A" && (
-          <span className="language">{movie.language}</span>
+        {results.data.Language !== "N/A" && (
+          <span className="language">{results.data.Language}</span>
         )}
       </div>
       <ul className="streaming">
@@ -60,34 +67,34 @@ const Details = () => {
       <div className="content">
         <div className="poster">
           <img
-            src={movie.poster}
+            src={results.data.Poster}
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = filmPlacholder;
             }}
-            alt={`${movie.title} poster`}
+            alt={`${results.data.Title} poster`}
           />
           <div className="ratings">{getRatings()}</div>
         </div>
         <div className="about">
-          <p className="plot">{movie.plot}</p>
+          <p className="plot">{results.data.Plot}</p>
 
           <div className="credits">
             <p className="production">
               <strong>Production: </strong>
-              {movie.production}
+              {results.data.Production}
             </p>
             <p className="director">
               <strong>Director: </strong>
-              {movie.director}
+              {results.data.Director}
             </p>
             <p className="writer">
               <strong>Writer: </strong>
-              {movie.writer}
+              {results.data.Writer}
             </p>
             <p className="stars">
               <strong>Stars: </strong>
-              {movie.actors}
+              {results.data.Actors}
             </p>
           </div>
         </div>
