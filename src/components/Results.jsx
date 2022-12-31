@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom";
-import movies from "../data/movies.json";
+import filmPlaceholder from "../assets/film-placeholder.png";
 
-const Results = () => {
+const Results = ({ movies }) => {
   return (
     <div className="results">
-      {movies.Search.map((movie) => (
+      {movies.map((movie) => (
         <div key={movie.imdbID} className="card">
           <Link to={`/movie/${movie.imdbID}`}>
-            <img src={movie.Poster} alt={movie.Title} />
+            <img
+              src={movie.Poster}
+              alt={movie.Title}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = filmPlaceholder;
+              }}
+            />
           </Link>
           <Link to={`/movie/${movie.imdbID}`}>
             {movie.Title} ({movie.Year})
