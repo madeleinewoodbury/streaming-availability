@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchMovie from "../util/fecthMovie";
-import streamingData from "../data/streaming.json";
+import fetchStreaming from "../util/fetchStreaming";
 import imdb from "../assets/imdb.png";
 import metacritic from "../assets/metacritic.png";
 import tomato from "../assets/tomato.png";
@@ -11,15 +11,18 @@ import filmPlacholder from "../assets/film-placeholder.png";
 const Details = () => {
   const { id } = useParams();
   const results = useQuery(["details", id], fetchMovie);
-  const streaming = streamingData.streamingAvailability.country.US;
+  const streamingResults = useQuery(["streaming", id], fetchStreaming);
 
-  if (results.isLoading) {
+  if (results.isLoading || streamingResults.isLoading) {
     return <h2 className="text-light">Loading...</h2>;
   }
 
+  const streaming = streamingResults.data.streamingAvailability.country.US;
+  const movie = results.data;
+
   const getRatings = () => {
-    if (results.data.Ratings !== undefined) {
-      let ratings = results.data.Ratings.map((rating, id) => (
+    if (movie.Ratings !== undefined) {
+      let ratings = movie.Ratings.map((rating, id) => (
         <div className="rating" key={id}>
           {rating.Source === "Internet Movie Database" && (
             <img className="imdb" src={imdb} alt="imdb" />
@@ -44,17 +47,17 @@ const Details = () => {
         Go Back
       </Link>
       <h1 className="text-light">
-        {results.data.Title} ({results.data.Year})
+        {movie.Title} ({movie.Year})
       </h1>
       <div className="info">
-        <span className="rating">{results.data.Rated}</span>
-        <span className="runtime">{results.data.Runtime}</span>
-        <span className="genre">{results.data.Genre}</span>
+        <span className="rating">{movie.Rated}</span>
+        <span className="runtime">{movie.Runtime}</span>
+        <span className="genre">{movie.Genre}</span>
         <span className="released">
-          {results.data.Released} ({results.data.Country})
+          {movie.Released} ({movie.Country})
         </span>
-        {results.data.Language !== "N/A" && (
-          <span className="language">{results.data.Language}</span>
+        {movie.Language !== "N/A" && (
+          <span className="language">{movie.Language}</span>
         )}
       </div>
       <ul className="streaming">
@@ -67,34 +70,34 @@ const Details = () => {
       <div className="content">
         <div className="poster">
           <img
-            src={results.data.Poster}
+            src={movie.Poster}
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = filmPlacholder;
             }}
-            alt={`${results.data.Title} poster`}
+            alt={`${movie.Title} poster`}
           />
           <div className="ratings">{getRatings()}</div>
         </div>
         <div className="about">
-          <p className="plot">{results.data.Plot}</p>
+          <p className="plot">{movie.Plot}</p>
 
           <div className="credits">
             <p className="production">
               <strong>Production: </strong>
-              {results.data.Production}
+              {movie.Production}
             </p>
             <p className="director">
               <strong>Director: </strong>
-              {results.data.Director}
+              {movie.Director}
             </p>
             <p className="writer">
               <strong>Writer: </strong>
-              {results.data.Writer}
+              {movie.Writer}
             </p>
             <p className="stars">
               <strong>Stars: </strong>
-              {results.data.Actors}
+              {movie.Actors}
             </p>
           </div>
         </div>
