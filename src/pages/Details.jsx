@@ -3,10 +3,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchMovie from "../util/fecthMovie";
 import fetchStreaming from "../util/fetchStreaming";
-import imdb from "../assets/imdb.png";
-import metacritic from "../assets/metacritic.png";
-import tomato from "../assets/tomato.png";
 import filmPlacholder from "../assets/film-placeholder.png";
+import Ratings from "../components/Ratings";
 
 const Details = () => {
   const { id } = useParams();
@@ -19,27 +17,6 @@ const Details = () => {
 
   const streaming = streamingResults.data.streamingAvailability.country.US;
   const movie = results.data;
-
-  const getRatings = () => {
-    if (movie.Ratings !== undefined) {
-      let ratings = movie.Ratings.map((rating, id) => (
-        <div className="rating" key={id}>
-          {rating.Source === "Internet Movie Database" && (
-            <img className="imdb" src={imdb} alt="imdb" />
-          )}
-          {rating.Source === "Rotten Tomatoes" && (
-            <img className="tomato" src={tomato} alt="rotten tomato" />
-          )}
-          {rating.Source === "Metacritic" && (
-            <img className="metacritic" src={metacritic} alt="rotten tomato" />
-          )}
-          <span>{rating.Value}</span>
-        </div>
-      ));
-
-      return ratings;
-    }
-  };
 
   return (
     <div className="details">
@@ -77,7 +54,7 @@ const Details = () => {
             }}
             alt={`${movie.Title} poster`}
           />
-          <div className="ratings">{getRatings()}</div>
+          <Ratings ratings={movie.Ratings} />
         </div>
         <div className="about">
           <p className="plot">{movie.Plot}</p>
